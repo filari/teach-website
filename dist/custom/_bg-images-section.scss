@@ -1,0 +1,66 @@
+.bg-triangele{
+  min-height: 500px;
+
+  img.bg_img{
+    position: absolute;
+    bottom:0;
+    left:0;
+    max-width: 500px;
+    width: 100%;
+  }
+  img.bg_dots{
+    position: absolute;
+    bottom: -50px;
+    left: 10%;
+    max-width: 130px;
+  }
+
+  &.style-2{
+    img.bg_img{
+      transform: rotate(90deg);
+      top: 0;
+      left: 15%;
+      bottom: unset;
+    }
+    img.bg_dots{
+      transform: rotate(90deg);
+      left: 0;
+      top: 10%;
+      bottom: unset;
+    }
+  }
+}
+
+._custom-animation-container{
+  li{
+    width: 100%;
+    position: relative;
+    height: 730px;
+    margin: 5rem 0;
+  }
+}
+._animation-card{
+  display: flex;
+  ._animation-step-2{
+    justify-content: flex-end;
+  }
+}
+._animation-figure{
+  position: relative;
+  width: 730px;
+ img{
+   position: absolute;
+   left:0;
+   top: 0;
+   z-index: 1;
+   transform: scale(0.7);
+ }
+  img:first-child{
+    left:5%;
+    top: 5%;
+  }
+  img:last-child{
+    z-index: 0;
+    transform: scale(1);
+  }
+}

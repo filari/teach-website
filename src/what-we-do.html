@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../dist/output.css" rel="stylesheet" />
+    <link href="../dist/custom-app.css" rel="stylesheet" />
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.2/dist/iconify-icon.min.js"></script>
+  </head>
+  <body class="overflow-x-hidden">
+    <div class="dark:bg-gray-900">
+      <div class="relative overflow-hidden">
+        <div class="absolute inset-y-0 h-full w-full" aria-hidden="true">
+          <div class="relative h-full none" style="display: none">
+            <svg
+              class="absolute right-full translate-y-1/3 translate-x-1/4 transform sm:translate-x-1/2 md:translate-y-1/2 lg:translate-x-full"
+              width="404"
+              height="784"
+              fill="none"
+              viewBox="0 0 404 784"
+            >
+              <defs>
+                <pattern
+                  id="e229dbec-10e9-49ee-8ec3-0286ca089edf"
+                  x="0"
+                  y="0"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect
+                    x="0"
+                    y="0"
+                    width="4"
+                    height="4"
+                    class="text-gray-200 dark:fill-gray-800 fill-indigo-100"
+                    fillss="currentColor"
+                  />
+                </pattern>
+              </defs>
+              <rect
+                width="404"
+                height="784"
+                fill="url(#e229dbec-10e9-49ee-8ec3-0286ca089edf)"
+              />
+            </svg>
+            <svg
+              class="absolute left-full -translate-y-3/4 -translate-x-1/4 transform sm:-translate-x-1/2 md:-translate-y-1/2 lg:-translate-x-3/4"
+              width="404"
+              height="784"
+              fill="none"
+              viewBox="0 0 404 784"
+            >
+              <defs>
+                <pattern
+                  id="d2a68204-c383-44b1-b99f-42ccff4e5365"
+                  x="0"
+                  y="0"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <rect
+                    x="0"
+                    y="0"
+                    width="4"
+                    height="4"
+                    class="text-gray-200 dark:fill-gray-800 fill-indigo-100"
+                    fillss="currentColor"
+                  />
+                </pattern>
+              </defs>
+              <rect
+                width="404"
+                height="784"
+                fill="url(#d2a68204-c383-44b1-b99f-42ccff4e5365)"
+              />
+            </svg>
+          </div>
+        </div>
+        <!-- Bg Svg's -->
+
+        <div class="relative pb-16">
+          <header class="bg-white dark:bg-gray-900 py-6">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6">
+              <nav
+                class="relative flex items-center justify-between sm:h-10 md:justify-center"
+                aria-label="Global"
+              >
+                <div
+                  class="flex flex-1 items-center md:absolute md:inset-y-0 md:left-0"
+                >
+                  <div
+                    class="flex w-full items-center justify-between md:w-auto"
+                  >
+                    <a href="index.html">
+                      <span class="sr-only">Your Company</span>
+                      <span class="h-8 w-auto sm:h-10">
+                        <svg
+                          width="100"
+                          height="32"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <ellipse
+                            cx="96"
+                            cy="26.5"
+                            rx="4"
+                            ry="4.5"
+                            class="fill-indigo-700 dark:fill-white"
+                          ></ellipse>
+                          <path
+                            class="fill-indigo-700 dark:fill-white"
+                            d="M13.148 15.846H9.804V30.97H2.318V15.846H0V9.652h2.318v-.19c0-2.736.798-4.826 2.394-6.27C6.333 1.722 8.652.988 11.666.988c.608 0 1.077.013 1.406.038v6.346a7.123 7.123 0 00-.836-.038c-.81 0-1.406.19-1.786.57-.38.355-.595.937-.646 1.748h3.344v6.194zM19.572 7.676c-1.318 0-2.382-.355-3.192-1.064-.786-.735-1.178-1.647-1.178-2.736 0-1.115.392-2.04 1.178-2.774C17.19.367 18.254 0 19.572 0c1.292 0 2.33.367 3.116 1.102.81.735 1.216 1.66 1.216 2.774 0 1.09-.406 2.001-1.216 2.736-.786.71-1.824 1.064-3.116 1.064zm3.686 1.976V30.97H15.81V9.652h7.448zM34.947 2.85v28.12H27.5V2.85h7.448zM37.973 20.292c0-2.204.392-4.13 1.178-5.776.81-1.647 1.9-2.913 3.268-3.8 1.393-.887 2.938-1.33 4.636-1.33 1.469 0 2.736.291 3.8.874 1.064.583 1.887 1.368 2.47 2.356V9.652h7.448V30.97h-7.448v-2.964c-.583.988-1.419 1.773-2.508 2.356-1.064.583-2.318.874-3.762.874-1.698 0-3.243-.443-4.636-1.33-1.368-.887-2.458-2.153-3.268-3.8-.786-1.672-1.178-3.61-1.178-5.814zm15.352 0c0-1.368-.38-2.445-1.14-3.23-9.766 18.938-1.647-1.178-2.736-1.178-1.115 0-2.04.393-2.774 1.178-.735.76-1.102 1.837-1.102 3.23 0 1.368.367 2.457 1.102 3.268.734.785 1.659 1.178 2.774 1.178 1.089 0 2.001-.393 2.736-1.178.76-.785 1.14-1.875 1.14-3.268zM72.465 13.414c.836-1.216 1.85-2.179 3.04-2.888a7.371 7.371 0 013.838-1.064v7.942h-2.09c-1.621 0-2.825.317-3.61.95-.785.633-1.178 1.735-1.178 3.306v9.31h-7.448V9.652h7.448v3.762zM85.775 7.676c-1.317 0-2.381-.355-3.192-1.064-.785-.735-1.178-1.647-1.178-2.736 0-1.115.393-2.04 1.178-2.774C83.393.367 84.458 0 85.775 0c1.292 0 2.33.367 3.116 1.102.81.735 1.216 1.66 1.216 2.774 0 1.09-.405 2.001-1.216 2.736-.785.71-1.824 1.064-3.116 1.064zm3.686 1.976V30.97h-7.448V9.652h7.448z"
+                          ></path>
+                        </svg>
+                      </span>
+                    </a>
+                    <div class="-mr-2 flex items-center md:hidden">
+                      <button
+                        type="button"
+                        class="inline-flex items-center justify-center rounded-md bg-gray-50 p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        aria-expanded="false"
+                      >
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Heroicon name: outline/bars-3 -->
+                        <svg
+                          class="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <ul class="hidden md:flex md:space-x-10">
+                  <li class="relative _dropdown">
+                    <a
+                      href="#"
+                      class="dark:text-gray-100 p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-gray-900"
+                    >
+                      About
+                      <svg
+                        x-state:on="Item active"
+                        x-state:off="Item inactive"
+                        class="ml-2 h-5 w-5 group-hover:text-gray-500 text-gray-600"
+                        :class="{ 'text-gray-600': open, 'text-gray-400': !(open) }"
+                        x-description="Heroicon name: mini/chevron-down"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </a>
+                    <div
+                      class="absolute _display-on-hover z-10 -ml-4 mt-0 pt-5 w-screen max-w-md transform lg:left-1/2 lg:ml-0 lg:max-w-2xl lg:-translate-x-1/2"
+                    >
+                      <div
+                        class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
+                      >
+                        <div
+                          class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2"
+                        >
+                          <a
+                            href="#"
+                            class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                          >
+                            <div
+                              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                            >
+                              <svg
+                                class="h-6 w-6"
+                                x-description="Heroicon name: outline/chart-bar"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                                ></path>
+                              </svg>
+                            </div>
+                            <div class="ml-4">
+                              <p class="text-base font-medium text-gray-900">
+                                Team
+                              </p>
+                              <p class="mt-1 text-sm text-gray-500">
+                                Ready to go an extra mile to deliver great
+                                software solutions.
+                              </p>
+                            </div>
+                          </a>
+
+                          <a
+                            href="#"
+                            class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                          >
+                            <div
+                              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                            >
+                              <svg
+                                class="h-6 w-6"
+                                x-description="Heroicon name: outline/cursor-arrow-rays"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59"
+                                ></path>
+                              </svg>
+                            </div>
+                            <div class="ml-4">
+                              <p class="text-base font-medium text-gray-900">
+                                How We Work
+                              </p>
+                              <p class="mt-1 text-sm text-gray-500">
+                                Get to know how can you work with us.
+                              </p>
+                            </div>
+                          </a>
+
+                          <a
+                            href="#"
+                            class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                          >
+                            <div
+                              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                            >
+                              <svg
+                                class="h-6 w-6"
+                                x-description="Heroicon name: outline/shield-check"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+                                ></path>
+                              </svg>
+                            </div>
+                            <div class="ml-4">
+                              <p class="text-base font-medium text-gray-900">
+                                Contact
+                              </p>
+                              <p class="mt-1 text-sm text-gray-500">
+                                To discuss your idea and consult with our
+                                technology experts.
+                              </p>
+                            </div>
+                          </a>
+
+                          <a
+                            href="#"
+                            class="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                          >
+                            <div
+                              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                            >
+                              <svg
+                                class="h-6 w-6"
+                                x-description="Heroicon name: outline/squares-2x2"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"
+                                ></path>
+                              </svg>
+                            </div>
+                            <div class="ml-4">
+                              <p class="text-base font-medium text-gray-900">
+                                Careers
+                              </p>
+                              <p class="mt-1 text-sm text-gray-500">
+                                Explore current openings and apply to be a part
+                                of IndiaNIC.
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a
+                      href="what-we-do.html"
+                      class="dark:text-gray-100 p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none ring-2 ring-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-gray-900"
+                      >Services</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="dark:text-gray-100 p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-gray-900"
+                      >Technology</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="dark:text-gray-100 p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-gray-900"
+                      >Solutions</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="dark:text-gray-100 p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-gray-900"
+                      >Work</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="dark:text-gray-100 p-2 group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 text-gray-900"
+                      >Methodology</a
+                    >
+                  </li>
+                </ul>
+                <div
+                  class="hidden md:absolute md:inset-y-0 md:right-0 md:flex md:items-center md:justify-end"
+                >
+                  <span class="inline-flex rounded-md shadow mr-2">
+                    <a
+                      href="#"
+                      class="inline-flex items-center rounded-md border border-transparent text-white bg-red-500 px-4 py-2 text-base font-medium"
+                      >Contact Us</a
+                    >
+                  </span>
+                  <button
+                    id="theme-toggle"
+                    type="button"
+                    class="text-gray-500 dark:text-gray-900 dark:bg-white hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+                  >
+                    <svg
+                      id="theme-toggle-dark-icon"
+                      class="hidden w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                      ></path>
+                    </svg>
+                    <svg
+                      id="theme-toggle-light-icon"
+                      class="hidden w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </nav>
+            </div>
+          </header>
+
+          <div
+            class="mx-auto max-w-7xl px-4 sm:my-24 lg:mt-40 lg:mb-30 sm:px-6"
+          >
+            <div class="text-center lg:max-w-3xl mx-auto">
+              <!-- <span class="py-2 text-indigo-500 text-xl inline mx-auto px-6 rounded-2xl dark:bg-gray-700 bg-gray-50">We Simplify Your Business</span> -->
+              <h1
+                class="text-2xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl mt-3"
+              >
+                <span class="block dark:text-white"
+                  >Web and Mobile Software Development Services</span
+                >
+              </h1>
+              <p
+                class="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-4xl md:text-xl"
+              >
+                A successful offshore software application development company
+                since 1998, providing a full range of website and mobile app
+                development, games development, IoT, AR-VR and other IT services
+                and solutions globally.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-15 dark:bg-gray-900 dark:text-white overflow-hidden">
+      <div class="mx-auto"> 
+        <div class="relative overflow-hidden bg-white pt-16 pb-32">
+            <div class="relative">
+              <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+                <div class="mx-auto max-w-xl px-6 lg:mx-0 lg:max-w-none lg:py-20 lg:px-0">
+                  <div>  
+                    <div class="mt-6">
+                        <h2 class="text-3xl font-bold tracking-tight text-gray-900">Mobile Apps Development</h2>
+                        <p class="mt-4 text-lg text-gray-500">From B2B or B2E apps for enterprises, small businesses, and startups, we have a proven track record of offering high-impact, result driven and engaging mobile application development services. IndiaNIC is a top mobile app development company that is renowned for delivering native Android app development, native iOS app development, hybrid and cross-platform app development services to build next-gen mobile applications using the latest technology stack.</p> 
+                      </div>
+                  </div>
+                  <div class="mt-8 border-t border-gray-200 pt-6">
+                    <div class="w-100">
+                        
+                        <ul class="grid grid-cols-3 gap-2 sm:grid-cols-6">
+                            <li>
+                                <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="ic:baseline-apple" width="40" height="40"></iconify-icon></a>                   
+                            </li> 
+                            <li>
+                                <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="ic:baseline-android" width="40" height="40"></iconify-icon></a>                   
+                            </li> 
+                            <li>
+                                <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="mdi:react" width="40" height="40"></iconify-icon></a>                   
+                            </li> 
+                            <li>
+                                <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="mdi:xamarin" width="40" height="40"></iconify-icon></a>                   
+                            </li> 
+                        </ul>
+                      <div class="w-100">
+                        <ul class="grid grid-cols-2 gap-2 sm:grid-cols-2 mt-10">
+                            <li>Native iOS App Development</li>
+                            <li>Native Android App Development</li>
+                            <li>Cross-platform App Development</li>
+                            <li>Hybrid App Development</li>
+                            <li>Wearable App Development</li>
+                            <li>React Native App Development</li>
+                            <li>Xamarin App Development</li>
+                            <li>Flutter App Development</li>
+                        </ul>
+                      </div> 
+                      
+                      <div class="mt-10">
+                        <a href="#" class="inline-flex rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700">Get started</a>
+                      </div>
+                    </div> 
+                  </div>
+                </div>
+                <div class="mt-12 sm:mt-16 lg:mt-0">
+                  <div class="-mr-48 pl-4 sm:pl-6 md:-mr-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+                    <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="../public/img/mobileapp-3.jpg" alt="Inbox user interface">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-24">
+              <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+                <div class="mx-auto max-w-xl px-6 lg:col-start-2 lg:mx-0 lg:max-w-none lg:py-20 lg:px-0">
+                    <div> 
+                        <div class="mt-6">
+                            <h2 class="text-3xl font-bold tracking-tight text-gray-900">Web Development</h2>
+                            <p class="mt-4 text-lg text-gray-500">Being a leading website application development company, our certified developers have unparalleled expertise in working with the latest web technologies to deliver custom web solutions. Whether creating a web presence for your company, an information hub for your business or empowering your apps/IoT devices through backend- IndiaNIC does it all by covering a wide spectrum of web solutions and framework.</p> 
+                          </div>
+                      </div>
+                      <div class="mt-8 border-t border-gray-200 pt-6">
+                        <div class="w-100">
+                            
+                            <ul class="grid grid-cols-3 gap-2 sm:grid-cols-6">
+                                <li>
+                                    <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="ic:baseline-apple" width="40" height="40"></iconify-icon></a>                   
+                                </li> 
+                                <li>
+                                    <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="ic:baseline-android" width="40" height="40"></iconify-icon></a>                   
+                                </li> 
+                                <li>
+                                    <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="mdi:react" width="40" height="40"></iconify-icon></a>                   
+                                </li> 
+                                <li>
+                                    <a href="#" class="border py-2 flex align-middle justify-center rounded-lg text-indigo-600"><iconify-icon icon="mdi:xamarin" width="40" height="40"></iconify-icon></a>                   
+                                </li> 
+                            </ul>
+                          <div class="w-100">
+                            <ul class="grid grid-cols-2 gap-2 sm:grid-cols-2 mt-10">
+                                <li>Native iOS App Development</li>
+                                <li>Native Android App Development</li>
+                                <li>Cross-platform App Development</li>
+                                <li>Hybrid App Development</li>
+                                <li>Wearable App Development</li>
+                                <li>React Native App Development</li>
+                                <li>Xamarin App Development</li>
+                                <li>Flutter App Development</li>
+                            </ul>
+                          </div> 
+                          
+                          <div class="mt-10">
+                            <a href="#" class="inline-flex rounded-lg bg-indigo-600 px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm ring-1 ring-indigo-600 hover:bg-indigo-700 hover:ring-indigo-700">Hire Web Developer</a>
+                          </div>
+                        </div> 
+                      </div>
+                </div>
+                <div class="mt-12 sm:mt-16 lg:col-start-1 lg:mt-0">
+                  <div class="-ml-48 pr-4 sm:pr-6 md:-ml-16 lg:relative lg:m-0 lg:h-full lg:px-0">
+                    <img class="w-full rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none" src="../public/img/coding-man.jpg" alt="Customer profile user interface">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+      </div>
+    </div>
+ 
+
+    <section class="pb-20">
+        <div class="mx-auto max-w-5xl text-center">
+            <p class="mt-2 text-5xl font-bold tracking-tight text-indigo-600 dark:text-white">
+                Let's work together 
+            </p>
+            <p class="mx-auto mt-5 max-w-prose text-xl text-gray-600 dark:text-gray-200">
+                We’d love to hear from you! Send us a message using the form opposite, or email us. We’d love to hear from you! Send us a message using the form opposite, or email us.
+            </p>
+        </div>
+        <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-5 lg:px-8 mt-10">
+            <div class="lg:col-start-2 bg-gray-50 p-10 rounded-xl shadow-xl ring-1 ring-black ring-opacity-5">
+              <div class="mx-auto max-w-md sm:max-w-lg lg:mx-0">
+                <form action="#" method="POST" class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                  <div>
+                    <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
+                    <div class="mt-1">
+                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-grape-500 focus:ring-grape-500 sm:text-sm">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
+                    <div class="mt-1">
+                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-grape-500 focus:ring-grape-500 sm:text-sm">
+                    </div>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <div class="mt-1">
+                      <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-grape-500 focus:ring-grape-500 sm:text-sm">
+                    </div>
+                  </div>
+                  <div class="sm:col-span-2">
+                    <div class="flex justify-between">
+                      <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                      <span id="phone-description" class="text-sm text-gray-500">Optional</span>
+                    </div>
+                    <div class="mt-1">
+                      <input type="text" name="phone" id="phone" autocomplete="tel" aria-describedby="phone-description" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-grape-500 focus:ring-grape-500 sm:text-sm">
+                    </div>
+                  </div>
+                  <fieldset class="sm:col-span-2">
+                    <legend class="block text-sm font-medium text-gray-700">Expected budget</legend>
+                    <div class="mt-4 grid grid-cols-1 gap-y-4">
+                      <div class="flex items-center">
+                        <input id="budget-under-25k" name="budget" value="under_25k" type="radio" class="h-4 w-4 border-gray-300 text-grape-600 focus:ring-grape-500">
+                        <label for="budget-under-25k" class="ml-3">
+                          <span class="block text-sm text-gray-700">Less than $25K</span>
+                        </label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="budget-25k-50k" name="budget" value="25k-50k" type="radio" class="h-4 w-4 border-gray-300 text-grape-600 focus:ring-grape-500">
+                        <label for="budget-25k-50k" class="ml-3">
+                          <span class="block text-sm text-gray-700">$25K – $50K</span>
+                        </label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="budget-50k-100k" name="budget" value="50k-100k" type="radio" class="h-4 w-4 border-gray-300 text-grape-600 focus:ring-grape-500">
+                        <label for="budget-50k-100k" class="ml-3">
+                          <span class="block text-sm text-gray-700">$50K – $100K</span>
+                        </label>
+                      </div>
+                      <div class="flex items-center">
+                        <input id="budget-over-100k" name="budget" value="over_100k" type="radio" class="h-4 w-4 border-gray-300 text-grape-600 focus:ring-grape-500">
+                        <label for="budget-over-100k" class="ml-3">
+                          <span class="block text-sm text-gray-700">$100K+</span>
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="sm:col-span-2">
+                    <div class="flex justify-between">
+                      <label for="how-can-we-help" class="block text-sm font-medium text-gray-700">How can we help you?</label>
+                      <span id="how-can-we-help-description" class="text-sm text-gray-500">Max. 500 characters</span>
+                    </div>
+                    <div class="mt-1">
+                      <textarea id="how-can-we-help" name="how-can-we-help" aria-describedby="how-can-we-help-description" rows="4" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-grape-500 focus:ring-grape-500 sm:text-sm"></textarea>
+                    </div>
+                  </div> 
+                  <div class="text-right sm:col-span-2">
+                    <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-grape-700 focus:outline-none focus:ring-2 focus:ring-grape-500 focus:ring-offset-2">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="lg:col-start-1">
+                <div class="mx-auto max-w-7xl py-16 lg:py-16 px-4 sm:py-6 sm:px-6 lg:px-8">
+                    <h2 class="text-center text-base font-semibold text-gray-400">Trusted by over 26,000 forward-thinking
+                        companies</h2>
+                    <div class="mt-8 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-4 content-center"> 
+                        <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                            <img class="h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Tuple">
+                        </div>
+                        <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                            <img class="h-12" src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg" alt="Mirage">
+                        </div>
+                        <div class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                            <img class="h-12" src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg" alt="StaticKit">
+                        </div>
+                        <div class="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
+                            <img class="h-12" src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg" alt="Transistor">
+                        </div>
+                        <div class="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
+                            <img class="h-12" src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg" alt="Workcation">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer
+      class="bg-gray-50 dark:bg-gray-900"
+      aria-labelledby="footer-heading"
+    >
+      <h2 id="footer-heading" class="sr-only">Footer</h2>
+      <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div class="space-y-8 xl:col-span-1">
+            <!-- <img class="h-10" src="https://tailwindui.com/img/logos/mark.svg?color=gray&amp;shade=300" alt="Company name"> -->
+            <svg
+              width="100"
+              height="32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <ellipse
+                cx="96"
+                cy="26.5"
+                rx="4"
+                ry="4.5"
+                class="fill-gray-700 dark:fill-white"
+              ></ellipse>
+              <path
+                class="fill-gray-700 dark:fill-white"
+                d="M13.148 15.846H9.804V30.97H2.318V15.846H0V9.652h2.318v-.19c0-2.736.798-4.826 2.394-6.27C6.333 1.722 8.652.988 11.666.988c.608 0 1.077.013 1.406.038v6.346a7.123 7.123 0 00-.836-.038c-.81 0-1.406.19-1.786.57-.38.355-.595.937-.646 1.748h3.344v6.194zM19.572 7.676c-1.318 0-2.382-.355-3.192-1.064-.786-.735-1.178-1.647-1.178-2.736 0-1.115.392-2.04 1.178-2.774C17.19.367 18.254 0 19.572 0c1.292 0 2.33.367 3.116 1.102.81.735 1.216 1.66 1.216 2.774 0 1.09-.406 2.001-1.216 2.736-.786.71-1.824 1.064-3.116 1.064zm3.686 1.976V30.97H15.81V9.652h7.448zM34.947 2.85v28.12H27.5V2.85h7.448zM37.973 20.292c0-2.204.392-4.13 1.178-5.776.81-1.647 1.9-2.913 3.268-3.8 1.393-.887 2.938-1.33 4.636-1.33 1.469 0 2.736.291 3.8.874 1.064.583 1.887 1.368 2.47 2.356V9.652h7.448V30.97h-7.448v-2.964c-.583.988-1.419 1.773-2.508 2.356-1.064.583-2.318.874-3.762.874-1.698 0-3.243-.443-4.636-1.33-1.368-.887-2.458-2.153-3.268-3.8-.786-1.672-1.178-3.61-1.178-5.814zm15.352 0c0-1.368-.38-2.445-1.14-3.23-9.766 18.938-1.647-1.178-2.736-1.178-1.115 0-2.04.393-2.774 1.178-.735.76-1.102 1.837-1.102 3.23 0 1.368.367 2.457 1.102 3.268.734.785 1.659 1.178 2.774 1.178 1.089 0 2.001-.393 2.736-1.178.76-.785 1.14-1.875 1.14-3.268zM72.465 13.414c.836-1.216 1.85-2.179 3.04-2.888a7.371 7.371 0 013.838-1.064v7.942h-2.09c-1.621 0-2.825.317-3.61.95-.785.633-1.178 1.735-1.178 3.306v9.31h-7.448V9.652h7.448v3.762zM85.775 7.676c-1.317 0-2.381-.355-3.192-1.064-.785-.735-1.178-1.647-1.178-2.736 0-1.115.393-2.04 1.178-2.774C83.393.367 84.458 0 85.775 0c1.292 0 2.33.367 3.116 1.102.81.735 1.216 1.66 1.216 2.774 0 1.09-.405 2.001-1.216 2.736-.785.71-1.824 1.064-3.116 1.064zm3.686 1.976V30.97h-7.448V9.652h7.448z"
+              ></path>
+            </svg>
+            <p class="text-base text-gray-500">
+              Making the world a better place through constructing elegant
+              hierarchies.
+            </p>
+            <div class="flex space-x-6">
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Facebook</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Instagram</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Twitter</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+                  ></path>
+                </svg>
+              </a>
+
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">GitHub</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+
+              <a href="#" class="text-gray-400 hover:text-gray-500">
+                <span class="sr-only">Dribbble</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="mt-12 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div class="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 class="text-base font-medium text-gray-900">Solutions</h3>
+                <ul role="list" class="mt-4 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Marketing</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Analytics</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Commerce</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Insights</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-12 md:mt-0">
+                <h3 class="text-base font-medium text-gray-900">Support</h3>
+                <ul role="list" class="mt-4 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Pricing</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Documentation</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Guides</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >API Status</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 class="text-base font-medium text-gray-900">Company</h3>
+                <ul role="list" class="mt-4 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >About</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Blog</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Jobs</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Press</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Partners</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-12 md:mt-0">
+                <h3 class="text-base font-medium text-gray-900">Legal</h3>
+                <ul role="list" class="mt-4 space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Claim</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Privacy</a
+                    >
+                  </li>
+
+                  <li>
+                    <a
+                      href="#"
+                      class="text-base text-gray-500 hover:text-gray-900"
+                      >Terms</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-12 border-t border-gray-200 pt-8">
+          <p class="text-base text-gray-400 xl:text-center">
+            © 2020 Your Company, Inc. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js"
+      integrity="sha512-No22QdEJ4zlXvdQDpm6oeXcjwajpNxvnstx6NEU/5qZFysa5gsgj/bSfAFpSc9Za5LjbgQLRXyCeY53aWmk8ZA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      var themeToggleDarkIcon = document.getElementById(
+        "theme-toggle-dark-icon"
+      );
+      var themeToggleLightIcon = document.getElementById(
+        "theme-toggle-light-icon"
+      );
+
+      // Change the icons inside the button based on previous settings
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        themeToggleLightIcon.classList.remove("hidden");
+      } else {
+        themeToggleDarkIcon.classList.remove("hidden");
+      }
+
+      var themeToggleBtn = document.getElementById("theme-toggle");
+
+      themeToggleBtn.addEventListener("click", function () {
+        // toggle icons inside button
+        themeToggleDarkIcon.classList.toggle("hidden");
+        themeToggleLightIcon.classList.toggle("hidden");
+
+        // if set via local storage previously
+        if (localStorage.getItem("color-theme")) {
+          if (localStorage.getItem("color-theme") === "light") {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("color-theme", "dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("color-theme", "light");
+          }
+
+          // if NOT set via local storage previously
+        } else {
+          if (document.documentElement.classList.contains("dark")) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("color-theme", "light");
+          } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("color-theme", "dark");
+          }
+        }
+      });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/Observer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/EaselPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/PixiPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/CustomEase.min.js"></script>
+  </body>
+</html>

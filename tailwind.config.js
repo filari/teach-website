@@ -9,5 +9,4 @@ module.exports = {
   ],
   darkMode: 'class',
 }
-// npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
-// npx tailwindcss -i ./src/input.scss -o ./dist/output.css --watch
+// npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch 

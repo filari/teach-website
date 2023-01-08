@@ -296,8 +296,6 @@
 .anim-svg {
   background: linear-gradient(45deg, #4338ca 0%, #2563eb 29%, #2563eb 66%, #ef4444 100%);
   background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -323,13 +321,13 @@
   background: rgba(255, 255, 255, 0.07);
   left: -20vmin;
   top: -20vmin;
-  -webkit-animation: morph 15s linear infinite alternate, spin 20s linear infinite;
-          animation: morph 15s linear infinite alternate, spin 20s linear infinite;
   z-index: 1;
   will-change: border-radius, transform;
   -webkit-transform-origin: 30% 30%;
           transform-origin: 30% 30%;
   pointer-events: none;
+  -webkit-animation: morph 15s linear infinite alternate;
+          animation: morph 15s linear infinite alternate;
 }
 
 .anim-svg::after {
@@ -339,9 +337,22 @@
   right: -10vmin;
   top: auto;
   bottom: 0;
-  animation: morph 10s linear infinite alternate, spin 26s linear infinite reverse;
   -webkit-transform-origin: 10% 10%;
           transform-origin: 10% 10%;
+  -webkit-animation: morph 10s linear infinite alternate;
+          animation: morph 10s linear infinite alternate;
+}
+
+.anim-svg.animation-active {
+  -webkit-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+.anim-svg.animation-active::after {
+  -webkit-animation: morph 15s linear infinite alternate, spin 20s linear infinite;
+          animation: morph 15s linear infinite alternate, spin 20s linear infinite;
+}
+.anim-svg.animation-active::after {
+  animation: morph 10s linear infinite alternate, spin 26s linear infinite reverse;
 }
 
 @-webkit-keyframes Gradient {
